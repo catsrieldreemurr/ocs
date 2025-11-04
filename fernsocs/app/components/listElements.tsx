@@ -57,9 +57,14 @@ interface setListProps{
 }
 
 export default function SetList({charactersData}:setListProps){
+
+    function handleClick(){
+
+    }   
+
     return(    
             charactersData.map((character: Character, index:number) => (
-                <div className="bg-black/50 p-5 m-5 rounded-lg text-white" key={index}>
+                <div key={index}>
                     <h1 className="text-2xl font-bold">{character.characterProfile.fullName}</h1>
                 </div>
             )
