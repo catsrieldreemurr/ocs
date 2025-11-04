@@ -7,6 +7,6 @@ export default async function TestFetch(){
     const data = await res.json();
 
     return (
-    <SetList characters={data}></SetList>
+    <SetList charactersData={data.characters}></SetList>
     )
 }
