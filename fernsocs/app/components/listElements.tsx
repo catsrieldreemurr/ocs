@@ -64,11 +64,11 @@ export default function SetList({charactersData}:setListProps){
     }   
 
     return(    
-            <div className="flex flex-col gap-6 w-full justify-center">
+            <div className="flex flex-col gap-6 w-full justify-center items-center">
                 {charactersData.map((character: Character, index:number) => (
-                    <div key={index} className="flex gap-20 items-center mt-10 ">
+                    <div key={index} className="flex gap-20 items-center mt-10 bg-black/75 w-[50%] p-5 rounded-2xl">
                         <div className="flex w-50 h-50">
-                            <Image className="object-cover w-50 h-50" src={character.descriptions.imageURL} alt={character.descriptions.imageAlt} width={1000} height={100} quality={75}></Image>
+                            <Image className="object-cover w-50 h-50" src={character.descriptions.imageURL} alt={character.descriptions.imageAlt} width={1000} height={1000} quality={75}></Image>
                         </div>
                         <h1 className="text-2xl font-bold">{character.characterProfile.fullName}</h1>
                     </div>
