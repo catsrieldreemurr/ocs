@@ -15,7 +15,7 @@ export default function SetList({charactersData}:CharacterTypes.setListProps){
 
     return(    
             <div className="flex flex-col gap-6 w-full justify-center items-center">
-                {windowIsOpen && <PopupWindow charactersData={charactersData} currentIndex={currentIndex}></PopupWindow>}
+                {windowIsOpen && <PopupWindow charactersData={charactersData} currentIndex={currentIndex} setOpen={setWindowOpen}></PopupWindow>}
                 {charactersData.map((character: CharacterTypes.Character, index:number) => (
                     <div key={index} onClick={() => handleClick(index)}  className="flex gap-20 items-center mt-10 bg-black/75 w-[90%] sm:w-[50%] p-5 rounded-2xl transition duration-300 ease-in-out hover:translate-y-1 hover:scale-110" >
                         <div className="flex">
