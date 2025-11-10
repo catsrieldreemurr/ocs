@@ -1,6 +1,8 @@
 import { Dispatch, SetStateAction } from "react";
 import * as CharacterTypes from "../types/characterTypes"
 import Image from "next/image";
+import SetList from "./listElements";
+import CharacterTags from "./listTags";
 
 interface setProps{
     charactersData:CharacterTypes.Character[];
@@ -19,6 +21,7 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                 </div>
                 <button onClick={() => {setOpen(false)}} className="p-5 hover:bg-gray-300 rounded-2xl text-3xl font-bold text-shadow-lg text-shadow-red-300">Close</button>
             </div>
+            <CharacterTags tags={charactersData[currentIndex].metaInfo.tags}></CharacterTags>
         </div>
     )
 }
