@@ -23,30 +23,41 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
             </div>
             <CharacterTags tags={character.metaInfo.tags}></CharacterTags>
 
-            <div className="flex gap-5 items-center">
-                <Image src={character.descriptions.imageURL} height={1000} width={1000} alt={character.descriptions.imageAlt} className="sm:h-[15rem] sm:w-[15rem] h-[8rem] w-[8rem] mt-5 rounded-xl object-cover"></Image>
-                <div className="h-[100%] mt-5">
-                    <h2 className="text-2xl font-bold">Character Profile</h2>
-                    <p className="text-xl">Age: {character.characterProfile.age}</p>
-                    <p className="text-xl">Height: {character.characterProfile.height}</p>
-                    <p className="text-xl">Weight: {character.characterProfile.weight}</p>
-                    <p className="text-xl">Birthday: {character.characterProfile.birthday}</p>
-                    <p className="text-xl">Universe: {character.universeInfo.mainUniverse}</p>
+            <div className="sm:flex gap-5">
+                <div className="m:w-1/2">
+                    <div className="flex gap-5 items-center">
+                        <Image src={character.descriptions.imageURL} height={1000} width={1000} alt={character.descriptions.imageAlt} className="sm:h-[15rem] sm:w-[15rem] h-[8rem] w-[8rem] mt-5 rounded-xl object-cover"></Image>
+                        <div className="h-[100%] mt-5">
+                            <h2 className="text-2xl font-bold">Character Profile</h2>
+                            <p className="text-xl">Age: {character.characterProfile.age}</p>
+                            <p className="text-xl">Height: {character.characterProfile.height}</p>
+                            <p className="text-xl">Weight: {character.characterProfile.weight}</p>
+                            <p className="text-xl">Birthday: {character.characterProfile.birthday}</p>
+                            <p className="text-xl">Universe: {character.universeInfo.mainUniverse}</p>
+                            <p className="text-xl">Occupation: {character.storyInfo.occupation}</p>
+                        </div>
+                    </div>
+
+                    <InfoBox>                
+                        <h2 className="text-2xl font-bold">Style</h2>
+                        <hr className="border-gray-400 p-1"></hr>
+                        <p className="text-xl">Appearance: {character.descriptions.appearanceDescription}</p>
+                        <p className="text-xl">Clothing: {character.descriptions.clothingDescription}</p>
+                    </InfoBox>
+
+                    <InfoBox>
+                        <h2 className="text-2xl font-bold">Personality</h2>
+                        <hr className="border-gray-400 p-1"></hr>
+                        <p className="text-xl">{character.descriptions.personalitySummary}</p>
+                    </InfoBox>
                 </div>
+
+                <div className="mt-5 sm:w-1/2 p-5 border border-black h-[100%] bg-blue-50 rounded-3xl">
+                    <h2 className="text-2xl font-bold">Backstory</h2>
+                    <p className="text-xl">{character.storyInfo.backstory}</p>
+                </div>
+
             </div>
-
-            <InfoBox>                
-                <h2 className="text-2xl font-bold">Style</h2>
-                <hr className="border-gray-400 p-1"></hr>
-                <p className="text-xl">Appearance: {character.descriptions.appearanceDescription}</p>
-                <p className="text-xl">Clothing: {character.descriptions.clothingDescription}</p>
-            </InfoBox>
-
-            <InfoBox>
-                <h2 className="text-2xl font-bold">Personality</h2>
-                <hr className="border-gray-400 p-1"></hr>
-                <p className="text-xl">{character.descriptions.personalitySummary}</p>
-            </InfoBox>
         </div>
     )
 }
