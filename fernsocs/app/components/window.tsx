@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react";
 import * as CharacterTypes from "../types/characterTypes"
 import CharacterTags from "./listTags";
 import Image from "next/image";
+import InfoBox from "./infoBox";
 
 interface setProps{
     charactersData:CharacterTypes.Character[];
@@ -12,7 +13,7 @@ interface setProps{
 export default function PopupWindow({charactersData, currentIndex, setOpen}:setProps){
     const character = charactersData[currentIndex];
     return(
-        <div className="w-[95%] sm:w-[80%] rounded-xl text-black p-5 fixed top-1/2 -translate-y-1/2 shadow-md/5 z-100 bg-white left-1/2 -translate-x-1/2 transform h-[90%] overflow-y-auto">
+        <div className="w-[95%] sm:w-[80%] rounded-xl text-black p-5 fixed top-1/2 -translate-y-1/2 shadow-md/5 z-100 bg-white left-1/2 -translate-x-1/2 transform h-[90%] overflow-scroll">
             <div className="flex items-center justify-between">
                 <div className="sm:flex items-center gap-10">
                     <h1 className="text-4xl font-bold">{character.characterProfile.fullName}</h1>
@@ -34,12 +35,18 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                 </div>
             </div>
 
-            <div className="p-5 bg-gray-200 rounded-xl mt-5 sm:w-[50rem]">
+            <InfoBox>                
                 <h2 className="text-2xl font-bold">Style</h2>
                 <hr className="border-gray-400 p-1"></hr>
                 <p className="text-xl">Appearance: {character.descriptions.appearanceDescription}</p>
                 <p className="text-xl">Clothing: {character.descriptions.clothingDescription}</p>
-            </div>
+            </InfoBox>
+
+            <InfoBox>
+                <h2 className="text-2xl font-bold">Personality</h2>
+                <hr className="border-gray-400 p-1"></hr>
+                <p className="text-xl">{character.descriptions.personalitySummary}</p>
+            </InfoBox>
         </div>
     )
 }
