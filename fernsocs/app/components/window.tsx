@@ -19,7 +19,10 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
             <div className="flex items-center justify-between">
                 <div className="sm:flex items-center gap-10">
                     <h1 className="text-4xl font-bold">{character.characterProfile.fullName}</h1>
-                    <h2 className="text-2xl">{character.characterProfile.gender} ({character.characterProfile.pronouns})</h2>
+                    <div className="sm:flex gap-5">
+                        <h2 className="text-2xl">{character.characterProfile.gender}</h2>
+                        <h2 className="text-2xl">({character.characterProfile.pronouns})</h2>
+                    </div>
                 </div>
                 <button onClick={() => {setOpen(false)}} className="p-5 hover:bg-gray-300 rounded-2xl text-3xl font-bold text-shadow-lg text-shadow-red-300">Close</button>
 
