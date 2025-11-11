@@ -4,6 +4,7 @@ import CharacterTags from "./listTags";
 import Image from "next/image";
 import InfoBox from "./infoBox";
 import CreatorNotes from "./getCreatorNotes";
+import GetSkills from "./getSkills";
 
 interface setProps{
     charactersData:CharacterTypes.Character[];
@@ -72,6 +73,12 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                         </div>
                         <CreatorNotes notes={character.metaInfo.creatorNotes ?? []}></CreatorNotes>
                     </InfoBox>
+
+                    <GetSkills 
+                    abilities={character.characterSkills.abilities ?? []}
+                    skills={character.characterSkills.skills ?? []}
+                    weaknesses={character.characterSkills.weaknesses ?? []}
+                    strengths={character.characterSkills.strengths}/>
                 </div>
             </div>
         </div>
