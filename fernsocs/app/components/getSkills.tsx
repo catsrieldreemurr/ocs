@@ -5,15 +5,15 @@ interface SetTypes{
     strengths: string[]
 }
 
-const listItem = "text-xl bg-gray-200 p-2 rounded-xl mt-1"
+const listItem = "text-xl bg-gray-200 p-2 rounded-xl mt-1 hover:bg-gray-300"
 
 function GetItems(item:string[]){
     if(item.length <= 0){return <p className={listItem}>None</p>}
     return item.map((cItem, index) => <p key={index} className={listItem}>{cItem}</p>)
 }
 
-const divClass = "flex gap-2";
-const textClass = "font-bold text-xl p-2";
+const divClass = "sm:flex gap-2";
+const textClass = "font-bold text-xl p-2 ";
 
 export default function GetSkills({abilities, skills, weaknesses, strengths}:SetTypes){
     return(

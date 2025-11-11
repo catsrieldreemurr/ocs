@@ -22,6 +22,7 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                     <h2 className="text-2xl">{character.characterProfile.gender} ({character.characterProfile.pronouns})</h2>
                 </div>
                 <button onClick={() => {setOpen(false)}} className="p-5 hover:bg-gray-300 rounded-2xl text-3xl font-bold text-shadow-lg text-shadow-red-300">Close</button>
+
             </div>
             <CharacterTags tags={character.metaInfo.tags}></CharacterTags>
 
@@ -78,7 +79,7 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                     abilities={character.characterSkills.abilities ?? []}
                     skills={character.characterSkills.skills ?? []}
                     weaknesses={character.characterSkills.weaknesses ?? []}
-                    strengths={character.characterSkills.strengths}/>
+                    strengths={character.characterSkills.strengths ?? []}/>
                 </div>
             </div>
         </div>
