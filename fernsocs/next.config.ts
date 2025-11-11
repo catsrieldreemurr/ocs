@@ -1,7 +1,14 @@
-import type { NextConfig } from "next";
+// next.config.ts
+const nextConfig = {
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'github.com',
+        pathname: '/catsrieldreemurr/ocstorage/**',
+      },
+    ],
+  },
+}
 
-const nextConfig: NextConfig = {
-  /* config options here */
-};
-
-export default nextConfig;
+export default nextConfig
