@@ -3,6 +3,7 @@ import * as CharacterTypes from "../types/characterTypes"
 import CharacterTags from "./listTags";
 import Image from "next/image";
 import InfoBox from "./infoBox";
+import CreatorNotes from "./getCreatorNotes";
 
 interface setProps{
     charactersData:CharacterTypes.Character[];
@@ -24,7 +25,7 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
             <CharacterTags tags={character.metaInfo.tags}></CharacterTags>
 
             <div className="sm:flex gap-5">
-                <div className="m:w-1/2">
+                <div className="sm:w-1/2">
                     <div className="flex gap-5 items-center">
                         <Image src={character.descriptions.imageURL} height={1000} width={1000} alt={character.descriptions.imageAlt} className="sm:h-[15rem] sm:w-[15rem] h-[8rem] w-[8rem] mt-5 rounded-xl object-cover"></Image>
                         <div className="h-[100%] mt-5">
@@ -38,25 +39,40 @@ export default function PopupWindow({charactersData, currentIndex, setOpen}:setP
                         </div>
                     </div>
 
-                    <InfoBox>                
+                    <InfoBox colors="bg-red-200">                
                         <h2 className="text-2xl font-bold">Style</h2>
-                        <hr className="border-gray-400 p-1"></hr>
+                        <hr className="border-red-400 p-1"></hr>
                         <p className="text-xl">Appearance: {character.descriptions.appearanceDescription}</p>
                         <p className="text-xl">Clothing: {character.descriptions.clothingDescription}</p>
                     </InfoBox>
 
-                    <InfoBox>
+                    <InfoBox colors="bg-green-200">
                         <h2 className="text-2xl font-bold">Personality</h2>
-                        <hr className="border-gray-400 p-1"></hr>
+                        <hr className="border-green-400 p-1"></hr>
                         <p className="text-xl">{character.descriptions.personalitySummary}</p>
                     </InfoBox>
                 </div>
 
-                <div className="mt-5 sm:w-1/2 p-5 border border-black h-[100%] bg-blue-50 rounded-3xl">
-                    <h2 className="text-2xl font-bold">Backstory</h2>
-                    <p className="text-xl">{character.storyInfo.backstory}</p>
-                </div>
+                <div className="sm:w-1/2">
+                    <InfoBox colors="bg-blue-200 flex flex-col self-start">
+                        <h2 className="text-2xl font-bold">Backstory</h2>
+                        <hr className="border-blue-400 p-1"></hr>
+                        <p className="text-xl">{character.storyInfo.backstory}</p>
+                    </InfoBox>
 
+                    <InfoBox variant="small" colors="bg-yellow-200">
+                        <div className="flex gap-2">
+                            <h3 className="text-xl font-bold">Category: </h3>
+                            <p className="text-xl">{character.metaInfo.category}</p>
+                        </div>
+
+                        <div className="flex gap-2">
+                            <h3 className="text-xl font-bold mt-3">Creation Date:</h3>
+                            <p className="text-xl mt-3">{character.metaInfo.creationDate}</p>
+                        </div>
+                        <CreatorNotes notes={character.metaInfo.creatorNotes ?? []}></CreatorNotes>
+                    </InfoBox>
+                </div>
             </div>
         </div>
     )
