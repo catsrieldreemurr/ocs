@@ -13,6 +13,7 @@ export default function Home() {
   const [characters,setCharacters] = useState<any[]>([])
   const [results, setResults] = useState<any[]>([])
   const [windowIsOpen, setWindowOpen] = useState(false)
+  const [resultWindow, setResultOpen] = useState(false)
 
   useEffect(() => {
     FetchCharacters().then(setCharacters)
@@ -43,7 +44,7 @@ export default function Home() {
 
   return (
     <div className="flex justify-center items-center h-screen flex-col bg-neutral-200 dark:text-black">
-    {windowIsOpen && <SearchResultsWindow results={results} setOpen={setWindowOpen} windowIsOpen={windowIsOpen}></SearchResultsWindow>}
+    {windowIsOpen && <SearchResultsWindow results={results} setOpen={setWindowOpen} setResultOpen={setResultOpen} resultsIsOpen={resultWindow}></SearchResultsWindow>}
       <h1 className="text-4xl p-5 font-bold">Fern's OC Storage</h1>
       <div className="flex">
         <input type="search" id="search" name="searchField" size={20} className="border p-5 text-xl rounded-s-4xl text-center bg-white w-[25rem] hover:bg-gray-300" placeholder="Enter Search"
