@@ -10,15 +10,31 @@ export default function Home() {
   const [searchSelect, setSearchSelect] = useState("tag")
   const [currentSearch, setSearch] = useState("")
   const [characters,setCharacters] = useState<any[]>([])
+  const [results, setResults] = useState<any[]>([])
 
   useEffect(() => {
     FetchCharacters().then(setCharacters)
-  })
+  }, [])
   function handleChange(e:React.ChangeEvent<HTMLInputElement>){
     setSearch(e.target.value)
   }
   function search(parameter:string, searchSelect:string){
 
+    const term = parameter.toLowerCase
+    const filteredCharacters = characters.filter((char)=>{
+      switch(searchSelect){
+        case "name":
+          setResults(char.characterProfile.fullName.toLowerCase().includes(term));
+        case "tag":
+          setResults((char.metaInfo.tag || []).join(" ").toLowerCase().includes(term))
+        case "universe":
+          setResults(char.universeInfo.mainUniverse.toLowerCase().includes(term))
+        case"category":
+          setResults(char.metaInfo.category.toLowerCase().includes(term))
+        default:
+          setResults([])
+      }
+    })
   }
 
   return (
@@ -35,6 +51,7 @@ export default function Home() {
       <SearchOptions setSearchSelect = {setSearchSelect} searchSelect ={searchSelect}></SearchOptions>
 
       <Link href={"/list"} className="text-xl fixed bottom-5 right-5 bg-white p-2 rounded-2xl hover:bg-gray-300 dark:text-black">Go to Character List instead</Link>
+      <p>test{results}</p>
     </div>
     
   );

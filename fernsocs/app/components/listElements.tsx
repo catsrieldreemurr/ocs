@@ -12,7 +12,7 @@ export default function SetList({charactersData}:CharacterTypes.setListProps){
     
     useEffect(()=>{
         FetchCharacters().then(setCharacters)
-    })
+    },[])
 
     function handleClick(index:number){
         setWindowOpen(!windowIsOpen)
