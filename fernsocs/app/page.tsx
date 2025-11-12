@@ -20,25 +20,27 @@ export default function Home() {
   }
   function search(parameter:string, searchSelect:string){
 
-    const term = parameter.toLowerCase
-    const filteredCharacters = characters.filter((char)=>{
+    const term = parameter.toLowerCase()
+    const filtered = characters.filter((char)=>{
       switch(searchSelect){
         case "name":
-          setResults(char.characterProfile.fullName.toLowerCase().includes(term));
+          return(char.characterProfile.fullName.toLowerCase().includes(term));
         case "tag":
-          setResults((char.metaInfo.tag || []).join(" ").toLowerCase().includes(term))
+          return((char.metaInfo.tags || []).join(" ").toLowerCase().includes(term))
         case "universe":
-          setResults(char.universeInfo.mainUniverse.toLowerCase().includes(term))
+          return(char.universeInfo.mainUniverse.toLowerCase().includes(term))
         case"category":
-          setResults(char.metaInfo.category.toLowerCase().includes(term))
+          return(char.metaInfo.category.toLowerCase().includes(term))
         default:
-          setResults([])
+          return(false)
       }
     })
+
+    setResults(filtered)
   }
 
   return (
-    <div className="flex justify-center items-center h-screen flex-col bg-neutral-200">
+    <div className="flex justify-center items-center h-screen flex-col bg-neutral-200 dark:text-black">
       <h1 className="text-4xl p-5 font-bold">Fern's OC Storage</h1>
       <div className="flex">
         <input type="search" id="search" name="searchField" size={20} className="border p-5 text-xl rounded-s-4xl text-center bg-white w-[25rem] hover:bg-gray-300" placeholder="Enter Search"

@@ -28,7 +28,7 @@ export default function SetList({charactersData}:CharacterTypes.setListProps){
                             <Image className="object-cover w-[150px] h-[150px] sm:w-[300] sm:h-[300px] rounded-xl" src={character.descriptions.imageURL} alt={character.descriptions.imageAlt} width={1000} height={1000} quality={75}></Image>
                         </div>
 
-                        <div className="text-white dark:text-black">
+                        <div className="text-white">
                             <h1 className="text-3xl font-bold">{character.characterProfile.fullName}</h1>
                             <h2 className="text-xl">{character.universeInfo.mainUniverse}</h2>
                         </div>
