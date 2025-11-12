@@ -13,7 +13,7 @@ export default function SearchOptions({setSearchSelect, searchSelect}:settypes )
     }
     return(
     <div className="flex gap-5 p-5 m-5 flex-col sm:flex-row">
-        <button className="p-2 font-bold hover:bg-gray-300 rounded-sm" onClick={() => handleClick("")}>What to search?</button>
+        <button className="p-2 font-bold">What to search?</button>
         <button className={`${buttonClass} ${searchSelect == "tag" && "bg-gray-400"}`} onClick={() => handleClick("tag")}>#Tag</button>
         <button className={`${buttonClass} ${searchSelect == "name" && "bg-gray-400"}`} onClick={() => handleClick("name")}>'Name'</button>
         <button className={`${buttonClass} ${searchSelect == "category" && "bg-gray-400"}`} onClick={() => handleClick("category")}>(Category)</button>

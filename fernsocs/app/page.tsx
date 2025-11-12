@@ -1,16 +1,24 @@
 "use client"
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchOptions from "./components/searchmode";
 import Image from "next/image";
+import FetchCharacters from "./components/fetchCharacter";
 
 export default function Home() {
-  const [searchSelect, setSearchSelect] = useState("")
+  const [searchSelect, setSearchSelect] = useState("tag")
   const [currentSearch, setSearch] = useState("")
-  
+  const [characters,setCharacters] = useState<any[]>([])
+
+  useEffect(() => {
+    FetchCharacters().then(setCharacters)
+  })
   function handleChange(e:React.ChangeEvent<HTMLInputElement>){
     setSearch(e.target.value)
+  }
+  function search(parameter:string, searchSelect:string){
+
   }
 
   return (
@@ -20,7 +28,9 @@ export default function Home() {
         <input type="search" id="search" name="searchField" size={20} className="border p-5 text-xl rounded-s-4xl text-center bg-white w-[25rem] hover:bg-gray-300" placeholder="Enter Search"
         onChange={handleChange}
         ></input>
-        <button className="bg-white w-[4rem] rounded-e-4xl border hover:bg-gray-300"> <Image src={"/search.svg"} height={200} width={200} alt="searchbutton" className="h-[2rem] w-[2rem] m-auto"></Image> </button>
+        <button
+        onClick={() => search(currentSearch, searchSelect)}
+        className="bg-white w-[4rem] rounded-e-4xl border hover:bg-gray-300"> <Image src={"/search.svg"} height={200} width={200} alt="searchbutton" className="h-[2rem] w-[2rem] m-auto"></Image> </button>
       </div>
       <SearchOptions setSearchSelect = {setSearchSelect} searchSelect ={searchSelect}></SearchOptions>
 
