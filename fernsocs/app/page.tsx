@@ -47,7 +47,7 @@ export default function Home() {
     {windowIsOpen && <SearchResultsWindow results={results} setOpen={setWindowOpen} setResultOpen={setResultOpen} resultsIsOpen={resultWindow}></SearchResultsWindow>}
       <h1 className="text-4xl p-5 font-bold">Fern's OC Storage</h1>
       <div className="flex">
-        <input type="search" id="search" name="searchField" size={20} className="border p-5 text-xl rounded-s-4xl text-center bg-white w-[25rem] hover:bg-gray-300" placeholder="Enter Search"
+        <input type="search" id="search" name="searchField" size={20} className="border p-5 text-xl rounded-s-4xl text-center bg-white w-[18rem] sm:w-[25rem] hover:bg-gray-300" placeholder="Enter Search"
         onChange={handleChange}
         ></input>
         <button
