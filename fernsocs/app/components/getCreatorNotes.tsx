@@ -1,5 +1,3 @@
-import { NONAME } from "dns"
-
 interface setTypes{
     notes: string[]
 }
