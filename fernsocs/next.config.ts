@@ -1,5 +1,6 @@
 // next.config.ts
 const nextConfig = {
+  basePath: '/ocs',
   images: {
     remotePatterns: [
       {
